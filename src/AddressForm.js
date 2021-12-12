@@ -9,8 +9,11 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import SendIcon from "@mui/icons-material/Send";
+import { Redirect, useHistory } from "react-router-dom";
 
 export default function AddressForm(props) {
+  let history = useHistory();
+
   useEffect(() => {
     document.title = "Address Form";
   }, []);
@@ -34,7 +37,10 @@ export default function AddressForm(props) {
         },
       })
       .then((json) => {
-        console.log(json);
+        history.push({
+          pathname: "/results",
+          state: json.result,
+        });
       });
   }
 

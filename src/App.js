@@ -13,6 +13,7 @@ import Nav from "./Nav";
 import NotFound from "./NotFound";
 import Home from "./Home";
 import AddressForm from "./AddressForm";
+import Results from "./Results";
 
 function App() {
   const theme = createTheme({
@@ -32,6 +33,7 @@ function App() {
           <Box>
             <Switch>
               <Route path="/findreps" component={AddressForm} />
+              <Route path="/results" component={Results} />
               <Route path="/posts/:postId" />
               <Route exact path="/" component={Home} />
               <Route path="/404" component={NotFound} />
