@@ -1,7 +1,10 @@
 import { Box, Grid } from "@mui/material";
-import { useState } from "react";
+import { useEffect } from "react";
 import Rep from "./Rep";
 export default function Results(props) {
+  useEffect(() => {
+    document.title = "Results";
+  }, []);
   const results = props.location.state;
   let officialList = [...results.officials];
   let officeToOfficialList = [];

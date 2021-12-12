@@ -30,6 +30,7 @@ export default function Waiting(props) {
         position: "relative",
         height: "100%",
         borderRadius: "20px",
+        margin: "20px auto",
       }}
     >
       <CardContent sx={{}}>

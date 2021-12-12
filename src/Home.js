@@ -1,4 +1,4 @@
-import { Box, Grid, Typography } from "@mui/material";
+import { Box, Grid, Link, Typography } from "@mui/material";
 import { useEffect } from "react";
 
 export default function Home() {
@@ -18,18 +18,18 @@ export default function Home() {
               marginBottom: "40px",
             }}
           >
-            About Us
+            What is Rep Now?
           </Typography>
 
           <Typography
             variant="body1"
             sx={{ fontSize: "17px", marginBottom: "60px" }}
           >
-            BuyNothing offers people a way to give and receive, share, lend, and
-            express gratitude through a worldwide gift economy network in which
-            the true wealth is the web of connections formed between people. We
-            believe that communities are more resilient, sustainable, equitable,
-            and joyful when they have functional gift economies.
+            Rep Now is a website created with the intent to give simpler access
+            to information from government representatives to reproductive
+            rights. The information is provided in a clean and easy to
+            understand format, hopefully reducing the confusion that surrounds
+            the bureaucracy of our laws and government.
           </Typography>
         </Grid>
         <Grid
@@ -39,14 +39,14 @@ export default function Home() {
           sx={{ display: "flex", alignItems: "center" }}
         >
           <img
-            src="https://pbs.twimg.com/media/FE0H3oOXMAQMg3H?format=jpg&name=4096x4096"
+            src="https://www.technopixel.org/wp-content/uploads/2021/10/women-get-more-creative-during-ovulation-1-OhEecILm.jpeg"
             alt="gift giving"
             width="100%"
           />
         </Grid>
       </Grid>
       <Box
-        sx={{ width: "100%", backgroundColor: "#EEEFE6", padding: "60px 0px" }}
+        sx={{ width: "100%", backgroundColor: "#F2F1F9", padding: "60px 0px" }}
       >
         <Box sx={{ minWidth: "400px", width: "50%", margin: "auto" }}>
           <Box sx={{ textAlign: "center" }}>
@@ -59,20 +59,21 @@ export default function Home() {
                 marginBottom: "40px",
               }}
             >
-              Why we exist
+              Why this exists
             </Typography>
             <Typography
               variant="body1"
               sx={{ fontSize: "17px", marginBottom: "20px" }}
             >
-              We exist for the sole purpose of building community.
+              This exists for the sole purpose of creating access.
             </Typography>
             <Typography
               variant="body1"
               sx={{ fontSize: "17px", marginBottom: "60px" }}
             >
-              We believe a gift economy's real wealth is the people involved and
-              the web of connections that form to support them.
+              This exists for the belief in a future in which all people can
+              realize their rights and access the resources they need to achieve
+              sexual and reproductive health.
             </Typography>
           </Box>
           <Box sx={{ textAlign: "center" }}>
@@ -91,8 +92,9 @@ export default function Home() {
               variant="body1"
               sx={{ fontSize: "17px", marginBottom: "20px" }}
             >
-              Kindness. Caring for our Environment. Inclusion and Equity.
-              Building Locally. Sustainability. Strength in Diversity.
+              Kindness. Caring for One Another. Inclusion and Equity. Building
+              Locally. Sustainability. Strength in Diversity. Power in
+              Knowledge.
             </Typography>
           </Box>
         </Box>
@@ -120,13 +122,20 @@ export default function Home() {
               variant="body1"
               sx={{ fontSize: "17px", marginBottom: "60px" }}
             >
-              This is an imagined extension of a pre-existing project
-              (buynothingproject.org). I am not affiliated with the Buy Nothing
-              Project nor am I implying that this is an original concept. I am
-              only the creator of this web project and the functionalities of
-              this specific application. If you are curious about actually
-              joining a Buy Nothing group, visit their real website and find out
-              ways to take part in a group near you.
+              All of the information that is provided is made possible through
+              the use of the{" "}
+              <Link
+                href="https://developers.google.com/civic-information"
+                target="_blank"
+              >
+                Google Civic Information API
+              </Link>{" "}
+              as well as the{" "}
+              <Link href="https://www.abortionpolicyapi.com/" target="_blank">
+                Abortion Policy API
+              </Link>
+              . As long as the APIs remain up to date, the information will be
+              accurate.
             </Typography>
           </Box>
         </Box>

@@ -57,9 +57,9 @@ export default function NotFound() {
               startIcon={<ArrowBackIcon fontSize="small" />}
               sx={{
                 mt: 3,
-                backgroundColor: "#57B894",
+                backgroundColor: "#6B63FA",
                 "&:hover": {
-                  backgroundColor: "#3A6944",
+                  backgroundColor: "#6F3458",
                   color: "white",
                 },
               }}

@@ -1,10 +1,15 @@
 import { Box, Grid, TextField, MenuItem, Typography } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Gest from "./Gest";
+import Insure from "./Insure";
+import Loading from "./Loading";
 import Minors from "./Minors";
 import Waiting from "./Waiting";
 
 export default function Rights(props) {
+  useEffect(() => {
+    document.title = "Rights";
+  }, []);
   const proxyUrl = "https://ap-api-proxy.herokuapp.com/";
   const gestUrl =
     proxyUrl +
@@ -21,12 +26,14 @@ export default function Rights(props) {
   const [insure, setInsure] = useState();
   const [minors, setMinors] = useState();
   const [waiting, setWaiting] = useState();
+  const [loading, setLoading] = useState(false);
   function handleStateChange(event) {
     setState(event.target.value);
     fetchInfo(event.target.value);
   }
   function fetchInfo(st) {
     // Gestational limits
+    setLoading(true);
     fetch(`${gestUrl}${st}`, {
       method: "GET",
       headers: {
@@ -51,6 +58,7 @@ export default function Rights(props) {
       })
       .then((json) => {
         setInsure(json[Object.keys(json)[0]]);
+        document.title = Object.keys(json)[0];
       });
     // Minors
     fetch(`${minorsUrl}${st}`, {
@@ -77,6 +85,7 @@ export default function Rights(props) {
       })
       .then((json) => {
         setWaiting(json[Object.keys(json)[0]]);
+        setLoading(false);
       });
   }
   return (
@@ -104,7 +113,6 @@ export default function Rights(props) {
             <MenuItem value="CO">CO - Colorado</MenuItem>
             <MenuItem value="CT">CT - Connecticut</MenuItem>
             <MenuItem value="DE">DE - Delaware</MenuItem>
-            <MenuItem value="DC">DC - District of Columbia</MenuItem>
             <MenuItem value="FL">FL - Florida</MenuItem>
             <MenuItem value="GA">GA - Georgia</MenuItem>
             <MenuItem value="HI">HI - Hawaii</MenuItem>
@@ -150,32 +158,61 @@ export default function Rights(props) {
           </TextField>
         </Grid>
       </Grid>
-      {gest && (
-        <Gest
-          weeks={gest.banned_after_weeks_since_LMP}
-          life={gest.exception_life}
-          health={gest.exception_health}
-          fetal={gest.exception_fetal}
-          rapeOrIncest={gest.exception_rape_or_incest}
-        />
-      )}
-      {waiting && (
-        <Waiting
-          waitingHours={waiting.waiting_period_hours}
-          counselVisits={waiting.counseling_visits}
-          excepHealth={waiting.exception_health}
-          waitingNotes={waiting.waiting_period_notes}
-        />
-      )}
-      {minors && (
-        <Minors
-          age={minors.below_age}
-          parentalConReq={minors.parental_consent_required}
-          parentalNotifReq={minors.parental_notification_required}
-          parentReq={minors.parents_required}
-          judBypassAvail={minors.judicial_bypass_available}
-          allowMinorConsent={minors.allows_minor_to_consent}
-        />
+      {loading ? (
+        <Loading />
+      ) : (
+        <>
+          {gest && (
+            <Gest
+              weeks={gest.banned_after_weeks_since_LMP}
+              life={gest.exception_life}
+              health={gest.exception_health}
+              fetal={gest.exception_fetal}
+              rapeOrIncest={gest.exception_rape_or_incest}
+            />
+          )}
+          {waiting && (
+            <Waiting
+              waitingHours={waiting.waiting_period_hours}
+              counselVisits={waiting.counseling_visits}
+              excepHealth={waiting.exception_health}
+              waitingNotes={waiting.waiting_period_notes}
+            />
+          )}
+          {minors && (
+            <Minors
+              age={minors.below_age}
+              parentalConReq={minors.parental_consent_required}
+              parentalNotifReq={minors.parental_notification_required}
+              parentReq={minors.parents_required}
+              judBypassAvail={minors.judicial_bypass_available}
+              allowMinorConsent={minors.allows_minor_to_consent}
+            />
+          )}
+          {insure && (
+            <Insure
+              reqCoverage={insure.requires_coverage}
+              privCovNoRes={insure.private_coverage_no_restrictions}
+              privExcepLife={insure.private_exception_life}
+              privExcepHealth={insure.private_exception_health}
+              privExcepFetal={insure.private_exception_fetal}
+              privExcepRape={insure.private_exception_rape_or_incest}
+              exCovNoRes={insure.exchange_coverage_no_restrictions}
+              exExcepLife={insure.exchange_exception_life}
+              exExcepHealth={insure.exchange_exception_health}
+              exExcepFetal={insure.exchange_exception_fetal}
+              exExcepRape={insure.exchange_exception_rape_or_incest}
+              exForbidCov={insure.exchange_forbids_coverage}
+              medCovProvider={
+                insure.medicaid_coverage_provider_patient_decision
+              }
+              medExcepLife={insure.medicaid_exception_life}
+              medExcepHealth={insure.medicaid_exception_health}
+              medExcepFetal={insure.medicaid_exception_fetal}
+              medExcepRape={insure.medicaid_exception_rape_or_incest}
+            />
+          )}
+        </>
       )}
     </Box>
   );

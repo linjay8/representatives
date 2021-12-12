@@ -53,6 +53,7 @@ export default function Minors(props) {
         position: "relative",
         height: "100%",
         borderRadius: "20px",
+        margin: "20px auto",
       }}
     >
       <CardContent sx={{}}>

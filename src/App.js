@@ -15,6 +15,7 @@ import Home from "./Home";
 import AddressForm from "./AddressForm";
 import Results from "./Results";
 import Rights from "./Rights";
+import Footer from "./Footer";
 
 function App() {
   const theme = createTheme({
@@ -27,7 +28,14 @@ function App() {
     },
   });
   return (
-    <Box>
+    <Box
+      sx={{
+        minHeight: "100vh" /* will cover the 100% of viewport */,
+        display: "block",
+        position: "relative",
+        paddingBottom: "60px" /* height of your footer */,
+      }}
+    >
       <ThemeProvider theme={theme}>
         <Router>
           <Nav />
@@ -46,6 +54,9 @@ function App() {
           </Box>
         </Router>
       </ThemeProvider>
+      <footer>
+        <Footer />
+      </footer>
     </Box>
   );
 }

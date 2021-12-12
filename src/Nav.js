@@ -37,7 +37,7 @@ export default function Nav() {
 
   return (
     <ScrollToColor>
-      <AppBar position="sticky" sx={{ backgroundColor: "#3A6944" }}>
+      <AppBar position="sticky" sx={{ backgroundColor: "#4D243D" }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <Typography
@@ -52,7 +52,7 @@ export default function Nav() {
                 history.push("/");
               }}
             >
-              Reps Now
+              Rep Now
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -89,11 +89,11 @@ export default function Nav() {
                   component={NavLink}
                   to="/"
                   exact
-                  activeStyle={{ color: "#1D3522" }}
+                  activeStyle={{ color: "#2A1421" }}
                   sx={{
-                    color: "#3A6944",
+                    color: "#4D243D",
                     "&:hover": {
-                      color: "#1D3522",
+                      color: "#2A1421",
                     },
                   }}
                 >
@@ -103,11 +103,11 @@ export default function Nav() {
                   onClick={handleCloseNavMenu}
                   component={NavLink}
                   to="/findreps"
-                  activeStyle={{ color: "#1D3522" }}
+                  activeStyle={{ color: "#2A1421" }}
                   sx={{
-                    color: "#3A6944",
+                    color: "#4D243D",
                     "&:hover": {
-                      color: "#1D3522",
+                      color: "#2A1421",
                     },
                   }}
                 >
@@ -117,11 +117,11 @@ export default function Nav() {
                   onClick={handleCloseNavMenu}
                   component={NavLink}
                   to="/reprodutiverights"
-                  activeStyle={{ color: "#1D3522" }}
+                  activeStyle={{ color: "#2A1421" }}
                   sx={{
-                    color: "#3A6944",
+                    color: "#4D243D",
                     "&:hover": {
-                      color: "#1D3522",
+                      color: "#2A1421",
                     },
                   }}
                 >
@@ -138,7 +138,7 @@ export default function Nav() {
                 history.push("/");
               }}
             >
-              Reps Now
+              Rep Now
             </Typography>
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
               <Button
@@ -149,15 +149,15 @@ export default function Nav() {
                   display: "block",
                   textAlign: "center",
                   "&:hover": {
-                    color: "#1D3522",
+                    color: "#2A1421",
                   },
                   "&:active": {
-                    color: "#1D3522",
+                    color: "#2A1421",
                   },
                 }}
                 component={NavLink}
                 to="/"
-                activeStyle={{ color: "#1D3522" }}
+                activeStyle={{ color: "#2A1421" }}
               >
                 Home
               </Button>
@@ -168,12 +168,12 @@ export default function Nav() {
                   display: "block",
                   textAlign: "center",
                   "&:hover": {
-                    color: "#1D3522",
+                    color: "#2A1421",
                   },
                 }}
                 component={NavLink}
                 to="/findreps"
-                activeStyle={{ color: "#1D3522" }}
+                activeStyle={{ color: "#2A1421" }}
               >
                 Find Your Reps
               </Button>
@@ -186,10 +186,10 @@ export default function Nav() {
                   display: "block",
                   textAlign: "center",
                   "&:hover": {
-                    color: "#1D3522",
+                    color: "#2A1421",
                   },
                 }}
-                activeStyle={{ color: "#1D3522" }}
+                activeStyle={{ color: "#2A1421" }}
               >
                 Reproductive Rights
               </Button>

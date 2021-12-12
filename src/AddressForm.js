@@ -9,7 +9,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import SendIcon from "@mui/icons-material/Send";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 export default function AddressForm(props) {
   let history = useHistory();
@@ -237,21 +237,21 @@ export default function AddressForm(props) {
                 variant="contained"
                 endIcon={<SendIcon />}
                 sx={{
-                  backgroundColor: "#3A6944",
+                  backgroundColor: "#6F3458",
                   "&:hover": {
                     backgroundColor: "#57B894",
                   },
                 }}
               >
-                Post
+                Search
               </Button>
               <Button
                 type="button"
                 variant="outlined"
                 onClick={clearAll}
                 sx={{
-                  borderColor: "#3A6944",
-                  color: "#3A6944",
+                  borderColor: "#6F3458",
+                  color: "#6F3458",
                   "&:hover": {
                     borderColor: "#57B894",
                     color: "#57B894",
