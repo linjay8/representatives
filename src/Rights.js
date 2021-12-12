@@ -1,33 +1,82 @@
 import { Box, Grid, TextField, MenuItem, Typography } from "@mui/material";
 import { useState } from "react";
+import Gest from "./Gest";
+import Minors from "./Minors";
+import Waiting from "./Waiting";
 
 export default function Rights(props) {
+  const proxyUrl = "https://ap-api-proxy.herokuapp.com/";
   const gestUrl =
+    proxyUrl +
     "https://api.abortionpolicyapi.com/v1/gestational_limits/states/";
   const insureUrl =
+    proxyUrl +
     "https://api.abortionpolicyapi.com/v1/insurance_coverage/states/";
-  const minorsUrl = "https://api.abortionpolicyapi.com/v1/minors/states/";
+  const minorsUrl =
+    proxyUrl + "https://api.abortionpolicyapi.com/v1/minors/states/";
   const waitingUrl =
-    "https://api.abortionpolicyapi.com/v1/waiting_periods/states/";
+    proxyUrl + "https://api.abortionpolicyapi.com/v1/waiting_periods/states/";
   const [state, setState] = useState("");
+  const [gest, setGest] = useState();
+  const [insure, setInsure] = useState();
+  const [minors, setMinors] = useState();
+  const [waiting, setWaiting] = useState();
   function handleStateChange(event) {
     setState(event.target.value);
     fetchInfo(event.target.value);
   }
   function fetchInfo(st) {
-    console.log(process.env.REACT_APP_AP_API_KEY);
+    // Gestational limits
     fetch(`${gestUrl}${st}`, {
       method: "GET",
       headers: {
         token: process.env.REACT_APP_AP_API_KEY,
-        mode: "no-cors",
       },
     })
       .then((response) => {
         return response.json();
       })
       .then((json) => {
-        console.log(json);
+        setGest(json[Object.keys(json)[0]]);
+      });
+    // Insurance coverage
+    fetch(`${insureUrl}${st}`, {
+      method: "GET",
+      headers: {
+        token: process.env.REACT_APP_AP_API_KEY,
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        setInsure(json[Object.keys(json)[0]]);
+      });
+    // Minors
+    fetch(`${minorsUrl}${st}`, {
+      method: "GET",
+      headers: {
+        token: process.env.REACT_APP_AP_API_KEY,
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        setMinors(json[Object.keys(json)[0]]);
+      });
+    // Waiting periods
+    fetch(`${waitingUrl}${st}`, {
+      method: "GET",
+      headers: {
+        token: process.env.REACT_APP_AP_API_KEY,
+      },
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((json) => {
+        setWaiting(json[Object.keys(json)[0]]);
       });
   }
   return (
@@ -49,7 +98,6 @@ export default function Rights(props) {
             <MenuItem value>- Select -</MenuItem>
             <MenuItem value="AL">AL - Alabama</MenuItem>
             <MenuItem value="AK">AK - Alaska</MenuItem>
-            <MenuItem value="AS">AS - American Samoa</MenuItem>
             <MenuItem value="AZ">AZ - Arizona</MenuItem>
             <MenuItem value="AR">AR - Arkansas</MenuItem>
             <MenuItem value="CA">CA - California</MenuItem>
@@ -59,7 +107,6 @@ export default function Rights(props) {
             <MenuItem value="DC">DC - District of Columbia</MenuItem>
             <MenuItem value="FL">FL - Florida</MenuItem>
             <MenuItem value="GA">GA - Georgia</MenuItem>
-            <MenuItem value="GU">GU - Guam</MenuItem>
             <MenuItem value="HI">HI - Hawaii</MenuItem>
             <MenuItem value="ID">ID - Idaho</MenuItem>
             <MenuItem value="IL">IL - Illinois</MenuItem>
@@ -84,37 +131,52 @@ export default function Rights(props) {
             <MenuItem value="NY">NY - New York</MenuItem>
             <MenuItem value="NC">NC - North Carolina</MenuItem>
             <MenuItem value="ND">ND - North Dakota</MenuItem>
-            <MenuItem value="MP">MP - Northern Mariana Islands</MenuItem>
             <MenuItem value="OH">OH - Ohio</MenuItem>
             <MenuItem value="OK">OK - Oklahoma</MenuItem>
             <MenuItem value="OR">OR - Oregon</MenuItem>
             <MenuItem value="PA">PA - Pennsylvania</MenuItem>
-            <MenuItem value="PR">PR - Puerto Rico</MenuItem>
             <MenuItem value="RI">RI - Rhode Island</MenuItem>
             <MenuItem value="SC">SC - South Carolina</MenuItem>
             <MenuItem value="SD">SD - South Dakota</MenuItem>
             <MenuItem value="TN">TN - Tennessee</MenuItem>
             <MenuItem value="TX">TX - Texas</MenuItem>
-            <MenuItem value="UM">
-              UM - United States Minor Outlying Islands
-            </MenuItem>
             <MenuItem value="UT">UT - Utah</MenuItem>
             <MenuItem value="VT">VT - Vermont</MenuItem>
-            <MenuItem value="VI">VI - Virgin Islands</MenuItem>
             <MenuItem value="VA">VA - Virginia</MenuItem>
             <MenuItem value="WA">WA - Washington</MenuItem>
             <MenuItem value="WV">WV - West Virginia</MenuItem>
             <MenuItem value="WI">WI - Wisconsin</MenuItem>
             <MenuItem value="WY">WY - Wyoming</MenuItem>
-            <MenuItem value="AA">AA - Armed Forces Americas</MenuItem>
-            <MenuItem value="AE">AE - Armed Forces Africa</MenuItem>
-            <MenuItem value="AE">AE - Armed Forces Canada</MenuItem>
-            <MenuItem value="AE">AE - Armed Forces Europe</MenuItem>
-            <MenuItem value="AE">AE - Armed Forces Middle East</MenuItem>
-            <MenuItem value="AP">AP - Armed Forces Pacific</MenuItem>
           </TextField>
         </Grid>
       </Grid>
+      {gest && (
+        <Gest
+          weeks={gest.banned_after_weeks_since_LMP}
+          life={gest.exception_life}
+          health={gest.exception_health}
+          fetal={gest.exception_fetal}
+          rapeOrIncest={gest.exception_rape_or_incest}
+        />
+      )}
+      {waiting && (
+        <Waiting
+          waitingHours={waiting.waiting_period_hours}
+          counselVisits={waiting.counseling_visits}
+          excepHealth={waiting.exception_health}
+          waitingNotes={waiting.waiting_period_notes}
+        />
+      )}
+      {minors && (
+        <Minors
+          age={minors.below_age}
+          parentalConReq={minors.parental_consent_required}
+          parentalNotifReq={minors.parental_notification_required}
+          parentReq={minors.parents_required}
+          judBypassAvail={minors.judicial_bypass_available}
+          allowMinorConsent={minors.allows_minor_to_consent}
+        />
+      )}
     </Box>
   );
 }

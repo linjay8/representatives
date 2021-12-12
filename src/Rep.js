@@ -50,7 +50,6 @@ export default function Rep(props) {
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             {office}
           </Typography>
-
           <Chip
             label={party}
             size="small"
