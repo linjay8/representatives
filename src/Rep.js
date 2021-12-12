@@ -6,8 +6,18 @@ import Modal from "./Modal";
 import { useState } from "react";
 
 export default function Rep(props) {
-  const { name, party, phone, links, email, office, address, level, state } =
-    props;
+  const {
+    name,
+    party,
+    phone,
+    links,
+    email,
+    office,
+    address,
+    level,
+    state,
+    channels,
+  } = props;
   let partyColor = "primary";
   if (party === "Democratic Party") {
     partyColor = "primary";
@@ -70,6 +80,7 @@ export default function Rep(props) {
         email={email}
         level={level}
         state={state}
+        channels={channels}
       />
     </Card>
   );

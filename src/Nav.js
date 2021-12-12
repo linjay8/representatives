@@ -116,7 +116,7 @@ export default function Nav() {
                 <MenuItem
                   onClick={handleCloseNavMenu}
                   component={NavLink}
-                  to="/gift"
+                  to="/reprodutiverights"
                   activeStyle={{ color: "#1D3522" }}
                   sx={{
                     color: "#3A6944",
@@ -179,7 +179,7 @@ export default function Nav() {
               </Button>
               <Button
                 component={NavLink}
-                to="/gift"
+                to="/reproductiverights"
                 color="inherit"
                 sx={{
                   my: 2,

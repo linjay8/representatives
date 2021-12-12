@@ -14,6 +14,7 @@ import NotFound from "./NotFound";
 import Home from "./Home";
 import AddressForm from "./AddressForm";
 import Results from "./Results";
+import Rights from "./Rights";
 
 function App() {
   const theme = createTheme({
@@ -33,8 +34,11 @@ function App() {
           <Box>
             <Switch>
               <Route path="/findreps" component={AddressForm} />
-              <Route path="/results" component={Results} />
-              <Route path="/posts/:postId" />
+              <Route
+                path="/results"
+                render={(props) => <Results {...props} />}
+              />
+              <Route path="/reproductiverights" component={Rights} />
               <Route exact path="/" component={Home} />
               <Route path="/404" component={NotFound} />
               <Redirect to="/404" />

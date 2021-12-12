@@ -9,12 +9,16 @@ import {
   Tab,
   Typography,
   Link,
+  IconButton,
 } from "@mui/material";
 import ReactDom from "react-dom";
 import { useState } from "react";
 import TabContext from "@mui/lab/TabContext";
 import TabList from "@mui/lab/TabList";
 import TabPanel from "@mui/lab/TabPanel";
+import PublicIcon from "@mui/icons-material/Public";
+import TwitterIcon from "@mui/icons-material/Twitter";
+import FacebookIcon from "@mui/icons-material/Facebook";
 
 function a11yProps(index) {
   return {
@@ -49,7 +53,8 @@ export default function Modal(props) {
   }));
   const modalContainer = document.getElementById("modal-container");
 
-  let { onClose, open, name, phone, links, email, level, state } = props;
+  let { onClose, open, name, phone, links, email, level, state, channels } =
+    props;
   const handleClose = () => {
     onClose();
   };
@@ -57,6 +62,14 @@ export default function Modal(props) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  let twitter, facebook;
+  channels.forEach((channel) => {
+    if (channel.type === "Facebook") {
+      facebook = "https://www.facebook.com/" + channel.id;
+    } else if (channel.type === "Twitter") {
+      twitter = "https://www.twitter.com/" + channel.id;
+    }
+  });
 
   return (
     <Dialog
@@ -138,19 +151,42 @@ export default function Modal(props) {
                   ) : (
                     <Typography>
                       I am contacting {name} because we must take action in{" "}
-                      {state}
-                      to defend critical access to abortion care. We must put
-                      new protections in place that will hold the line on future
-                      attacks and repeal dangerous restrictions that already
-                      threaten our reproductive freedom. That is why I am URGING
-                      AGAINST/SUPPORTING [LEGISLATION] and I urge {name} to do
-                      the same.
+                      {state} to defend critical access to abortion care. We
+                      must put new protections in place that will hold the line
+                      on future attacks and repeal dangerous restrictions that
+                      already threaten our reproductive freedom. That is why I
+                      am URGING AGAINST/SUPPORTING [LEGISLATION] and I urge{" "}
+                      {name} to do the same.
                     </Typography>
                   )}
                 </>
               ) : null}
             </TabPanel>
-            <TabPanel value="3">{links}</TabPanel>
+            <TabPanel value="3">
+              {facebook ? (
+                <Link href={facebook} target={"_blank"}>
+                  <IconButton aria-label="twitter" style={{}}>
+                    <FacebookIcon />
+                  </IconButton>
+                </Link>
+              ) : null}
+              {twitter ? (
+                <Link href={twitter} target={"_blank"}>
+                  <IconButton aria-label="twitter" style={{}}>
+                    <TwitterIcon />
+                  </IconButton>
+                </Link>
+              ) : null}
+              {links.map((link) => {
+                return (
+                  <Link href={link} target={"_blank"}>
+                    <IconButton aria-label="website" style={{}}>
+                      <PublicIcon />
+                    </IconButton>
+                  </Link>
+                );
+              })}
+            </TabPanel>
           </TabContext>
         </DialogContentText>
       </DialogContent>

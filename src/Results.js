@@ -36,6 +36,7 @@ export default function Results(props) {
                   address={official.address[0]}
                   level={official.level}
                   state={results.normalizedInput.state}
+                  channels={official.channels}
                 />
               </Grid>
             );

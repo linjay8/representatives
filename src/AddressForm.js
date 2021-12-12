@@ -68,25 +68,7 @@ export default function AddressForm(props) {
     setZip(event.target.value);
     setZipError("");
   }
-  function submitPost() {
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify({
-        city: city,
-        categoryId: 0,
-        availability: 0,
-      }),
-      headers: {
-        "Content-type": "application/json",
-      },
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((json) => {
-        props.history.push("/");
-      });
-  }
+
   function handleSubmit(event) {
     event.preventDefault();
     let error = false;
