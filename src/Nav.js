@@ -116,7 +116,7 @@ export default function Nav() {
                 <MenuItem
                   onClick={handleCloseNavMenu}
                   component={NavLink}
-                  to="/reprodutiverights"
+                  to="/reproductiverights"
                   activeStyle={{ color: "#2A1421" }}
                   sx={{
                     color: "#4D243D",
@@ -133,7 +133,11 @@ export default function Nav() {
               variant="h5"
               noWrap
               component="div"
-              sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
+              sx={{
+                flexGrow: 1,
+                display: { xs: "flex", md: "none" },
+                pointer: "cursor",
+              }}
               onClick={() => {
                 history.push("/");
               }}

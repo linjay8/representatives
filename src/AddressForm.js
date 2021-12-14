@@ -239,7 +239,7 @@ export default function AddressForm(props) {
                 sx={{
                   backgroundColor: "#6F3458",
                   "&:hover": {
-                    backgroundColor: "#57B894",
+                    backgroundColor: "#6B63FA",
                   },
                 }}
               >
@@ -253,8 +253,8 @@ export default function AddressForm(props) {
                   borderColor: "#6F3458",
                   color: "#6F3458",
                   "&:hover": {
-                    borderColor: "#57B894",
-                    color: "#57B894",
+                    borderColor: "#6B63FA",
+                    color: "#6B63FA",
                   },
                 }}
               >

@@ -17,7 +17,7 @@ export default function Footer() {
   return (
     <Box
       margin="auto"
-      width={"95%"}
+      width={"90%"}
       display={"flex"}
       alignItems={"center"}
       justifyContent="space-between"

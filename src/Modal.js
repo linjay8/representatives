@@ -63,13 +63,15 @@ export default function Modal(props) {
     setValue(newValue);
   };
   let twitter, facebook;
-  channels.forEach((channel) => {
-    if (channel.type === "Facebook") {
-      facebook = "https://www.facebook.com/" + channel.id;
-    } else if (channel.type === "Twitter") {
-      twitter = "https://www.twitter.com/" + channel.id;
-    }
-  });
+  if (channels) {
+    channels.forEach((channel) => {
+      if (channel.type === "Facebook") {
+        facebook = "https://www.facebook.com/" + channel.id;
+      } else if (channel.type === "Twitter") {
+        twitter = "https://www.twitter.com/" + channel.id;
+      }
+    });
+  }
 
   return (
     <Dialog

@@ -48,7 +48,7 @@ export default function Home() {
       <Box
         sx={{ width: "100%", backgroundColor: "#F2F1F9", padding: "60px 0px" }}
       >
-        <Box sx={{ minWidth: "400px", width: "50%", margin: "auto" }}>
+        <Box sx={{ minWidth: "300px", width: "50%", margin: "auto" }}>
           <Box sx={{ textAlign: "center" }}>
             <Typography
               variant="h4"
@@ -105,7 +105,7 @@ export default function Home() {
           padding: "60px 0px",
         }}
       >
-        <Box sx={{ minWidth: "400px", width: "50%", margin: "auto" }}>
+        <Box sx={{ minWidth: "300px", width: "50%", margin: "auto" }}>
           <Box sx={{ textAlign: "center" }}>
             <Typography
               variant="h4"
