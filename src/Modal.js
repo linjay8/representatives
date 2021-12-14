@@ -115,7 +115,7 @@ export default function Modal(props) {
                 </Typography>
               ) : (
                 <Typography>
-                  I am contacting {name} because we must take action in {state}
+                  I am contacting {name} because we must take action in {state}{" "}
                   to defend critical access to abortion care. We must put new
                   protections in place that will hold the line on future attacks
                   and repeal dangerous restrictions that already threaten our
